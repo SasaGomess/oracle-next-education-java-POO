@@ -1,4 +1,4 @@
-package JavaBasico;
+package JavaBasico.exercicios_mod1;
 
 import java.time.LocalDate;
 import java.util.Locale;

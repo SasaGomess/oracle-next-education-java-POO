@@ -1,4 +1,4 @@
-package JavaBasico;
+package JavaBasico.exercicios_mod1;
 
 public class AtividadesModulo2 {
     public static void main(String[] args) {
