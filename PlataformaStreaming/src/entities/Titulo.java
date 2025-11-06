@@ -10,14 +10,14 @@ public class Titulo {
     private boolean includedInThePlan;
     private double sumOfRates;
     private int totalRate;
-    private int duration;
+    private int durationInMinutes;
 
-    public Titulo(String name, String description, LocalDate yearOfRelease, boolean includedInThePlan, int duration) {
+    public Titulo(String name, String description, LocalDate yearOfRelease, boolean includedInThePlan, int durationInMinutes) {
         this.name = name;
         this.description = description;
         this.yearOfRelease = yearOfRelease;
         this.includedInThePlan = includedInThePlan;
-        this.duration = duration;
+        this.durationInMinutes = durationInMinutes;
     }
 
     public Titulo(){
@@ -65,18 +65,18 @@ public class Titulo {
     }
 
 
-    public int getDuration() {
-        return duration;
+    public int getDurationInMinutes() {
+        return durationInMinutes;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setDurationInMinutes(int durationInMinutes) {
+        this.durationInMinutes = durationInMinutes;
     }
     public void showTechnicalInformation(){
         System.out.println("Nome do titulo: " + name);
         System.out.println("Descrição do titulo: " + description);
         System.out.println("Ano de lançamento: " + yearOfRelease);
-        System.out.println("Duração em horas do titulo: " + duration);
+        System.out.println("Duração em horas do titulo: " + durationInMinutes);
     }
     public void rating(double rate){
         sumOfRates += rate;
@@ -91,12 +91,12 @@ public class Titulo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Titulo movie = (Titulo) o;
-        return duration == movie.duration && Objects.equals(name, movie.name) && Objects.equals(yearOfRelease, movie.yearOfRelease);
+        return durationInMinutes == movie.durationInMinutes && Objects.equals(name, movie.name) && Objects.equals(yearOfRelease, movie.yearOfRelease);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, yearOfRelease, duration);
+        return Objects.hash(name, yearOfRelease, durationInMinutes);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class Titulo {
                 ", includedInThePlan=" + includedInThePlan +
                 ", rate=" + sumOfRates +
                 ", totalRate=" + totalRate +
-                ", duration=" + duration +
+                ", duration=" + durationInMinutes +
                 '}';
     }
 }
