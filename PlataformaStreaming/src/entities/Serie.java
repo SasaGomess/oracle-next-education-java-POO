@@ -3,11 +3,25 @@ package entities;
 
 import calculo.Classifiable;
 
+import java.time.LocalDate;
+
 public class Serie extends Titulo implements Classifiable {
     private int seasons;
     private boolean active;
     private int episodesOfSeasons;
     private int minutesForEpisodes;
+
+    public Serie(){
+
+    }
+
+    public Serie(String name, String description, LocalDate yearOfRelease, boolean includedInThePlan, int durationInMinutes, int seasons, boolean active, int episodesOfSeasons, int minutesForEpisodes) {
+        super(name, description, yearOfRelease, includedInThePlan, durationInMinutes);
+        this.seasons = seasons;
+        this.active = active;
+        this.episodesOfSeasons = episodesOfSeasons;
+        this.minutesForEpisodes = minutesForEpisodes;
+    }
 
     public int getSeasons() {
         return seasons;

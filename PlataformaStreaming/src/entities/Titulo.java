@@ -101,14 +101,12 @@ public class Titulo {
 
     @Override
     public String toString() {
-        return "Movie{" +
-                "name='" + name + '\'' +
+        return "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", yearOfRelease=" + yearOfRelease +
                 ", includedInThePlan=" + includedInThePlan +
                 ", rate=" + sumOfRates +
                 ", totalRate=" + totalRate +
-                ", duration=" + durationInMinutes +
-                '}';
+                ", duration=" + durationInMinutes;
     }
 }
