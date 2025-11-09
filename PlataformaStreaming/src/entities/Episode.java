@@ -8,6 +8,16 @@ public class Episode implements Classifiable {
     private Serie serie;
     private int totalViews;
 
+    public Episode(int number, String name, Serie serie, int totalViews) {
+        this.number = number;
+        this.name = name;
+        this.serie = serie;
+        this.totalViews = totalViews;
+    }
+    public Episode(){
+
+    }
+
     public int getTotalViews() {
         return totalViews;
     }

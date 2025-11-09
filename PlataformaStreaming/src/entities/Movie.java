@@ -11,8 +11,11 @@ public class Movie extends Titulo implements Classifiable {
     public Movie(String name, String description, LocalDate yearOfRelease, boolean includedInThePlan, int duration, String director) {
         super(name, description, yearOfRelease, includedInThePlan, duration);
         this.director = director;
-    }
 
+    }
+    public Movie(String name){
+        super(name);
+    }
 
     public Movie() {
 

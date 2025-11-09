@@ -24,12 +24,11 @@ public class Titulo {
 
     }
 
-    public String getName() {
-        return name;
+    public Titulo(String name) {
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {

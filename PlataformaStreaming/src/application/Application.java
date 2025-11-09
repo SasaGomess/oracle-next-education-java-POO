@@ -16,8 +16,7 @@ public class Application {
     public static void main(String[] args) {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        Movie m1 = new Movie();
-        m1.setName("O poderoso chefão");
+        Movie m1 = new Movie("O poderoso chefão");
         m1.setDescription("O poderoso chefão é um filme sobre uma família que participa da máfia italiana em 1901");
         m1.setDurationInMinutes(150);
         m1.setYearOfRelease(LocalDate.parse("1970-01-01", fmt));
@@ -38,8 +37,7 @@ public class Application {
         System.out.printf("\nMedia das avaliações é: %.2f %n", m1.rateAverage());
 
 
-        Serie serie = new Serie();
-        serie.setName("Dexter");
+        Serie serie = new Serie("Dexter");
         serie.setYearOfRelease(LocalDate.parse("2001-06-01", fmt));
 
         serie.setActive(false);
