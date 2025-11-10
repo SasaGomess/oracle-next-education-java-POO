@@ -2,15 +2,12 @@ package JavaBasico.atividades_trabalhando_com_colecoes_dados.app;
 
 import JavaBasico.atividades_trabalhando_com_colecoes_dados.entities.Pessoa;
 
-import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static JavaBasico.atividades_trabalhando_com_colecoes_dados.entities.Pessoa.PessoaBuilder.aPessoa;
 
-public class Programa {
+public class CadastroPessoas {
     public static void main(String[] args) {
         Pessoa p1 = aPessoa()
                 .withNome("Sabrina Gomes")

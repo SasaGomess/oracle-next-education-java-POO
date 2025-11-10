@@ -79,10 +79,5 @@ public class Application {
         for (Titulo titulo : titulos){
             System.out.println(titulo);
         }
-
-
-
-
-
     }
 }
