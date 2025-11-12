@@ -1,11 +1,11 @@
-package JavaBasico.atividades_trabalhando_com_colecoes_dados.app;
+package JavaBasico.atividades_trabalhando_com_colecoes_dados.modulo_1.app;
 
-import JavaBasico.atividades_trabalhando_com_colecoes_dados.entities.Pessoa;
+import JavaBasico.atividades_trabalhando_com_colecoes_dados.modulo_1.entities.Pessoa;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static JavaBasico.atividades_trabalhando_com_colecoes_dados.entities.Pessoa.PessoaBuilder.aPessoa;
+import static JavaBasico.atividades_trabalhando_com_colecoes_dados.modulo_1.entities.Pessoa.PessoaBuilder.aPessoa;
 
 public class CadastroPessoas {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package JavaBasico.atividades_trabalhando_com_colecoes_dados.entities;
+package JavaBasico.atividades_trabalhando_com_colecoes_dados.modulo_1.entities;
 
 public class Pessoa {
     private String nome;

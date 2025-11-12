@@ -1,7 +1,7 @@
-package JavaBasico.atividades_trabalhando_com_colecoes_dados.app;
+package JavaBasico.atividades_trabalhando_com_colecoes_dados.modulo_1.app;
 
-import JavaBasico.atividades_trabalhando_com_colecoes_dados.entities.Produto;
-import JavaBasico.atividades_trabalhando_com_colecoes_dados.entities.ProdutoPerecivel;
+import JavaBasico.atividades_trabalhando_com_colecoes_dados.modulo_1.entities.Produto;
+import JavaBasico.atividades_trabalhando_com_colecoes_dados.modulo_1.entities.ProdutoPerecivel;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
