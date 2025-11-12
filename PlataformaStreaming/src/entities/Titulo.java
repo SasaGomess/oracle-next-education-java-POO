@@ -24,7 +24,13 @@ public class Titulo {
 
     }
 
-    public Titulo(String name) {
+    public Titulo(String name, LocalDate yearOfRelease) {
+        this.name = name;
+        this.yearOfRelease = yearOfRelease;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {

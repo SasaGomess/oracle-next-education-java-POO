@@ -16,7 +16,7 @@ public class Application {
     public static void main(String[] args) {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        Movie m1 = new Movie("O poderoso chefão");
+        Movie m1 = new Movie("O poderoso chefão", LocalDate.parse("1970-01-01", fmt));
         m1.setDescription("O poderoso chefão é um filme sobre uma família que participa da máfia italiana em 1901");
         m1.setDurationInMinutes(150);
         m1.setYearOfRelease(LocalDate.parse("1970-01-01", fmt));
@@ -37,27 +37,27 @@ public class Application {
         System.out.printf("\nMedia das avaliações é: %.2f %n", m1.rateAverage());
 
 
-        Serie serie = new Serie("Dexter");
-        serie.setYearOfRelease(LocalDate.parse("2001-06-01", fmt));
+        Serie s1 = new Serie("Dexter", LocalDate.parse("2001-06-01", fmt));
+        s1.setYearOfRelease(LocalDate.parse("2001-06-01", fmt));
 
-        serie.setActive(false);
-        serie.setDescription("Uma serie sobre um serial killer que trabalha pra a polícia militar");
-        serie.showTechnicalInformation();
+        s1.setActive(false);
+        s1.setDescription("Uma s1 sobre um serial killer que trabalha pra a polícia militar");
+        s1.showTechnicalInformation();
 
-        serie.setMinutesForEpisodes(20);
-        serie.setSeasons(7);
-        serie.setEpisodesOfSeasons(12);
-        System.out.println("A duração para maratonar a serie " + serie.getDurationInMinutes());
-        serie.setSeasons(7);
+        s1.setMinutesForEpisodes(20);
+        s1.setSeasons(7);
+        s1.setEpisodesOfSeasons(12);
+        System.out.println("A duração para maratonar a s1 " + s1.getDurationInMinutes());
+        s1.setSeasons(7);
 
         TimeCalculator timeCalculator1 = new TimeCalculator();
         timeCalculator1.includes(m1);
-        timeCalculator1.includes(serie);
+        timeCalculator1.includes(s1);
 
         System.out.println(timeCalculator1.getTempototal());
         Episode ep1 = new Episode();
         ep1.setNumber(2);
-        ep1.setSerie(serie);
+        ep1.setSerie(s1);
         ep1.setTotalViews(3000);
         
         RecomendationFilter.filter(ep1);
@@ -71,7 +71,7 @@ public class Application {
         s2.rating(6.7);
         s2.showTechnicalInformation();
 
-        var titulos = new ArrayList<Titulo>(List.of(m1, m2, s2, serie));
+        var titulos = new ArrayList<Titulo>(List.of(m1, m2, s2, s1));
 
         System.out.println("\nTamanho da lista " + titulos.size());
         System.out.println("O primeiro titulo é: " + titulos.get(0).getName() + "\n");

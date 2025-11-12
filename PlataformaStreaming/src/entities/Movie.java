@@ -13,8 +13,9 @@ public class Movie extends Titulo implements Classifiable {
         this.director = director;
 
     }
-    public Movie(String name){
-        super(name);
+
+    public Movie(String name, LocalDate yearOfRelease) {
+        super(name, yearOfRelease);
     }
 
     public Movie() {
