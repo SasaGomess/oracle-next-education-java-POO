@@ -35,7 +35,7 @@ public class ListApplication {
         m1.setName("Harry Potter - Pedra Filosofal");
         System.out.println(m3.getName());
 
-        var titulosAssistidos = new ArrayList<Titulo>(List.of(m1, m2, s2, s1));
+        List<Titulo> titulosAssistidos = new ArrayList<>(List.of(m1, m2, s2, s1));
 
 
         for (Titulo titulo : titulosAssistidos) {
