@@ -3,7 +3,7 @@ package entities;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Titulo {
+public class Titulo implements Comparable<Titulo> {
     private String name;
     private String description;
     private LocalDate yearOfRelease;
@@ -106,12 +106,11 @@ public class Titulo {
 
     @Override
     public String toString() {
-        return "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", yearOfRelease=" + yearOfRelease +
-                ", includedInThePlan=" + includedInThePlan +
-                ", rate=" + sumOfRates +
-                ", totalRate=" + totalRate +
-                ", duration=" + durationInMinutes;
+        return "Nome: " + name + ", ano lançamento: " + yearOfRelease;
+    }
+
+    @Override
+    public int compareTo(Titulo o) {
+        return this.getTotalRate();
     }
 }
