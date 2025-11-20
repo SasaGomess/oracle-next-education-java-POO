@@ -1,32 +1,34 @@
-package application;
+package JavaBasico.atividades_consumindoAPI_lidando_com_exception.modulo_1;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public class ApplicationRequest {
+public class BuscaLivros {
     public static void main(String[] args) throws IOException, InterruptedException {
-
         Scanner sc = new Scanner(System.in);
-        System.out.println("Qual filme você busca?");
-        var busca = sc.nextLine();
-        var apiKey = System.getenv("OMDB_API_KEY");
 
-        String endereco = "http://www.omdbapi.com/?t=" + busca + "&apikey="+ apiKey;
+        System.out.println("Qual volume você busca? ");
+        var busca = sc.nextLine();
+        var buscaCodificada = URLEncoder.encode(busca, StandardCharsets.UTF_8);
+
+        var endereco = "https://www.googleapis.com/books/v1/volumes?q=" + buscaCodificada + "&maxResults=1&filter=free-ebooks";
+        URI uri = URI.create(endereco);
 
         HttpClient client = HttpClient.newHttpClient();
 
-        // Aqui eu faço a minha requisição
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endereco))
+                .uri(uri)
                 .build();
 
-        // Aqui eu obtenho a resposta da requisição, apartir da requisição enviada pelo client
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         System.out.println(response.body());
+
     }
 }

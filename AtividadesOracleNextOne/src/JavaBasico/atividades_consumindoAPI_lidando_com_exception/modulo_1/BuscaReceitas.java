@@ -1,30 +1,30 @@
-package application;
+package JavaBasico.atividades_consumindoAPI_lidando_com_exception.modulo_1;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public class ApplicationRequest {
+public class BuscaReceitas {
     public static void main(String[] args) throws IOException, InterruptedException {
-
         Scanner sc = new Scanner(System.in);
-        System.out.println("Qual filme você busca?");
-        var busca = sc.nextLine();
-        var apiKey = System.getenv("OMDB_API_KEY");
+        System.out.println("Digite uma receita para visualizar o passo a passo ");
+        var buscaReceita = sc.nextLine();
 
-        String endereco = "http://www.omdbapi.com/?t=" + busca + "&apikey="+ apiKey;
+        var buscaReceitaCodificada = URLEncoder.encode(buscaReceita, StandardCharsets.UTF_8);
+
+        var endereco = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + buscaReceitaCodificada;
 
         HttpClient client = HttpClient.newHttpClient();
 
-        // Aqui eu faço a minha requisição
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endereco))
                 .build();
 
-        // Aqui eu obtenho a resposta da requisição, apartir da requisição enviada pelo client
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         System.out.println(response.body());
