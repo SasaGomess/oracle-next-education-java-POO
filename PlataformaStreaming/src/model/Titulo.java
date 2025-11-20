@@ -1,18 +1,21 @@
-package entities;
+package model;
 
-import java.time.LocalDate;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Objects;
 
 public class Titulo implements Comparable<Titulo> {
+    @SerializedName("Title")
     private String name;
+    @SerializedName("Year")
+    private int yearOfRelease;
     private String description;
-    private LocalDate yearOfRelease;
     private boolean includedInThePlan;
     private double sumOfRates;
     private int totalRate;
     private int durationInMinutes;
 
-    public Titulo(String name, String description, LocalDate yearOfRelease, boolean includedInThePlan, int durationInMinutes) {
+    public Titulo(String name, String description, int yearOfRelease, boolean includedInThePlan, int durationInMinutes) {
         this.name = name;
         this.description = description;
         this.yearOfRelease = yearOfRelease;
@@ -24,9 +27,15 @@ public class Titulo implements Comparable<Titulo> {
 
     }
 
-    public Titulo(String name, LocalDate yearOfRelease) {
+    public Titulo(String name, int yearOfRelease) {
         this.name = name;
         this.yearOfRelease = yearOfRelease;
+    }
+
+    public Titulo(TituloOmdbDto tituloOmdbDto) {
+        this.name = tituloOmdbDto.title();
+        this.yearOfRelease = Integer.parseInt(tituloOmdbDto.year());
+        this.durationInMinutes = Integer.parseInt(tituloOmdbDto.runtime().substring(0, 2));
     }
 
     public void setName(String name) {
@@ -45,11 +54,11 @@ public class Titulo implements Comparable<Titulo> {
         this.description = description;
     }
 
-    public LocalDate getYearOfRelease() {
+    public int getYearOfRelease() {
         return yearOfRelease;
     }
 
-    public void setYearOfRelease(LocalDate yearOfRelease) {
+    public void setYearOfRelease(int yearOfRelease) {
         this.yearOfRelease = yearOfRelease;
     }
 
@@ -106,7 +115,7 @@ public class Titulo implements Comparable<Titulo> {
 
     @Override
     public String toString() {
-        return "Nome: " + name + ", ano lançamento: " + yearOfRelease;
+        return "Nome: " + name + ", ano lançamento: " + yearOfRelease + ", duração em minutos: " + durationInMinutes + "min";
     }
 
     @Override

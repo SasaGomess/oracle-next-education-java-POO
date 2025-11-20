@@ -1,20 +1,18 @@
-package entities;
+package model;
 
 
 import calculo.Classifiable;
 
-import java.time.LocalDate;
-
 public class Movie extends Titulo implements Classifiable {
    private String director;
 
-    public Movie(String name, String description, LocalDate yearOfRelease, boolean includedInThePlan, int duration, String director) {
+    public Movie(String name, String description, int yearOfRelease, boolean includedInThePlan, int duration, String director) {
         super(name, description, yearOfRelease, includedInThePlan, duration);
         this.director = director;
 
     }
 
-    public Movie(String name, LocalDate yearOfRelease) {
+    public Movie(String name, int yearOfRelease) {
         super(name, yearOfRelease);
     }
 

@@ -1,7 +1,6 @@
 package calculo;
 
-import entities.Movie;
-import entities.Titulo;
+import model.Titulo;
 
 public class TimeCalculator {
     private int tempototal;

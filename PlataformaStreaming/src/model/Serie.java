@@ -1,9 +1,7 @@
-package entities;
+package model;
 
 
 import calculo.Classifiable;
-
-import java.time.LocalDate;
 
 public class Serie extends Titulo implements Classifiable {
     private int seasons;
@@ -15,11 +13,11 @@ public class Serie extends Titulo implements Classifiable {
 
     }
 
-    public Serie(String name, LocalDate yearOfRelease) {
+    public Serie(String name, int yearOfRelease) {
         super(name, yearOfRelease);
     }
 
-    public Serie(String name, String description, LocalDate yearOfRelease, boolean includedInThePlan, int durationInMinutes, int seasons, boolean active, int episodesOfSeasons, int minutesForEpisodes) {
+    public Serie(String name, String description, int yearOfRelease, boolean includedInThePlan, int durationInMinutes, int seasons, boolean active, int episodesOfSeasons, int minutesForEpisodes) {
         super(name, description, yearOfRelease, includedInThePlan, durationInMinutes);
         this.seasons = seasons;
         this.active = active;
