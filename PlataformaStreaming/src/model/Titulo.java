@@ -1,13 +1,12 @@
 package model;
 
 import com.google.gson.annotations.SerializedName;
+import model.exception.ConversaoDeAnoInvalidoException;
 
 import java.util.Objects;
 
 public class Titulo implements Comparable<Titulo> {
-    @SerializedName("Title")
     private String name;
-    @SerializedName("Year")
     private int yearOfRelease;
     private String description;
     private boolean includedInThePlan;
@@ -34,6 +33,9 @@ public class Titulo implements Comparable<Titulo> {
 
     public Titulo(TituloOmdbDto tituloOmdbDto) {
         this.name = tituloOmdbDto.title();
+        if (tituloOmdbDto.year().length() > 4){
+            throw new ConversaoDeAnoInvalidoException("Não foi possível converter o ano pois tem mais de 4 caracteres");
+        }
         this.yearOfRelease = Integer.parseInt(tituloOmdbDto.year());
         this.durationInMinutes = Integer.parseInt(tituloOmdbDto.runtime().substring(0, 2));
     }
