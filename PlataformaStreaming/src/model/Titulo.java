@@ -40,6 +40,12 @@ public class Titulo implements Comparable<Titulo> {
         this.durationInMinutes = Integer.parseInt(tituloOmdbDto.runtime().substring(0, 2));
     }
 
+    public Titulo(TituloOmdbDto tituloOmdbDto, Integer qtdDeAnosLancamento) {
+        this.name = tituloOmdbDto.title();
+        this.yearOfRelease = qtdDeAnosLancamento;
+        this.durationInMinutes = Integer.parseInt(tituloOmdbDto.runtime().substring(0, 2));
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -117,7 +123,7 @@ public class Titulo implements Comparable<Titulo> {
 
     @Override
     public String toString() {
-        return "Nome: " + name + ", ano lançamento: " + yearOfRelease + ", duração em minutos: " + durationInMinutes + "min";
+        return "Nome: " + name + ", ano lançamento ou quatidade de anos : " + yearOfRelease + ", duração em minutos: " + durationInMinutes + "min";
     }
 
     @Override
