@@ -1,7 +1,7 @@
 package model;
 
-import com.google.gson.annotations.SerializedName;
-import model.exception.ConversaoDeAnoInvalidoException;
+import client.dto.TituloOmdbDto;
+import exception.ConversaoDeAnoInvalidoException;
 
 import java.util.Objects;
 
@@ -37,13 +37,19 @@ public class Titulo implements Comparable<Titulo> {
             throw new ConversaoDeAnoInvalidoException("Não foi possível converter o ano pois tem mais de 4 caracteres");
         }
         this.yearOfRelease = Integer.parseInt(tituloOmdbDto.year());
-        this.durationInMinutes = Integer.parseInt(tituloOmdbDto.runtime().substring(0, 2));
+
+        if (!tituloOmdbDto.runtime().equalsIgnoreCase("N/A")){
+            this.durationInMinutes = Integer.parseInt(tituloOmdbDto.runtime().substring(0, 2));
+        }
     }
 
     public Titulo(TituloOmdbDto tituloOmdbDto, Integer qtdDeAnosLancamento) {
         this.name = tituloOmdbDto.title();
         this.yearOfRelease = qtdDeAnosLancamento;
-        this.durationInMinutes = Integer.parseInt(tituloOmdbDto.runtime().substring(0, 2));
+
+        if (!tituloOmdbDto.runtime().equalsIgnoreCase("N/A")){
+            this.durationInMinutes = Integer.parseInt(tituloOmdbDto.runtime().substring(0, 2));
+        }
     }
 
     public void setName(String name) {

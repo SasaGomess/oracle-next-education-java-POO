@@ -1,48 +1,59 @@
 package application;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.GsonBuilder;
 import model.Titulo;
-import model.service.TituloConversor;
-import model.TituloOmdbDto;
-import model.service.TituloRequest;
-import model.exception.ConversaoDeAnoInvalidoException;
+import service.TituloConversor;
+import client.dto.TituloOmdbDto;
+import client.TituloRequest;
+import exception.ConversaoDeAnoInvalidoException;
 
 import java.io.IOException;
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
-import java.util.stream.Stream;
 
 public class ApplicationRequest {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         Scanner sc = new Scanner(System.in);
         TituloRequest request = new TituloRequest();
-        TituloConversor conversor = new TituloConversor();
+        TituloConversor conversor = new TituloConversor(new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).setPrettyPrinting().create());
         Titulo meuTitulo;
+        List<Titulo> titulos = new ArrayList<>();
+        var busca = "";
 
-        System.out.println("Qual título você busca?");
-        var busca = sc.nextLine();
+        while (!busca.equalsIgnoreCase("sair")) {
 
-        var json = request.findTitulo(busca);
+            System.out.println("Qual título você busca?");
+            busca = sc.nextLine();
 
-        System.out.println(json);
+            if (busca.equalsIgnoreCase("sair")){
+                break;
+            }
 
-        TituloOmdbDto tituloOmdbDto = conversor.tituloConversor(json);
+            var json = request.findTitulo(busca);
 
-        System.out.println();
+            TituloOmdbDto tituloOmdbDto = conversor.tituloJsonToObject(json);
 
-        try{
-            meuTitulo = new Titulo(tituloOmdbDto);
-        }catch (ConversaoDeAnoInvalidoException e) {
-            System.out.println("Aconteceu um erro: ");
-            System.out.println(e.getMessage());
+            System.out.println();
 
-            String[] duasDatas = tituloOmdbDto.year().split("–");
-            Integer dataInicial = Integer.parseInt(duasDatas[0]);
+            try {
+                meuTitulo = new Titulo(tituloOmdbDto);
+            } catch (ConversaoDeAnoInvalidoException e) {
+                System.out.println("Aconteceu um erro: ");
+                System.out.println(e.getMessage());
+                System.out.println("Pegando a data inicial, para criar um titulo");
+                String[] duasDatas = tituloOmdbDto.year().split("–");
+                Integer dataInicial = Integer.parseInt(duasDatas[0]);
 
-            meuTitulo = new Titulo(tituloOmdbDto, dataInicial);
+                meuTitulo = new Titulo(tituloOmdbDto, dataInicial);
+            }
+            titulos.add(meuTitulo);
+            System.out.println(meuTitulo);
         }
-        System.out.println(meuTitulo);
-        System.out.println("O programa finalizou");
+            titulos.forEach(System.out::println);
+            conversor.tituloObjectToJson(titulos);
+            System.out.println("O programa finalizou");
+        }
     }
-}

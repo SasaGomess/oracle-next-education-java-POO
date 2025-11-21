@@ -1,4 +1,4 @@
-package model.exception;
+package exception;
 
 public class ConversaoDeAnoInvalidoException extends RuntimeException {
     private String mensagem;
