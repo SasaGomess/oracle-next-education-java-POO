@@ -23,8 +23,8 @@ public class AddressConverter {
        return gson.fromJson(json, AddressDto.class);
     }
 
-    public void fileJsonGenerator(String json){
-        try (FileWriter writer = new FileWriter("meus_enderecos.json")){
+    public void fileJsonGenerator(String json, Address address){
+        try (FileWriter writer = new FileWriter(address.getCep() + "_meu_cep" + ".json")){
             writer.write(json);
         } catch (IOException e) {
             throw new RuntimeException(e);

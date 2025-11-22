@@ -44,13 +44,13 @@ public class Application {
 
                 String addressJson = converter.addressToJson(address);
 
-                converter.fileJsonGenerator(addressJson);
+                converter.fileJsonGenerator(addressJson, address);
 
                 System.out.println("**Digite qualquer letra** se você deseja cadastrar mais um endereço ou **sair** se deseja encerrar o programa");
                 resp = sc.nextLine();
 
             }
-            System.out.println("Programa encerrado. O seu Cep está salvo no arquivo meus_enderecos.json :)");
+            System.out.println("Programa encerrado. O seu Cep está salvo no arquivo com nome 'seu-cep_meu_cep.json' :)");
         } catch (IllegalArgumentException | IllegalStateException e) {
             System.out.println(e.getMessage());
             System.out.println("Ocorreu um erro o CEP estava inválido. Encerrando programa...");

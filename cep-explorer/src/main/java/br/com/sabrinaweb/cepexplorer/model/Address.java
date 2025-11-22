@@ -1,16 +1,18 @@
 package br.com.sabrinaweb.cepexplorer.model;
 
 import br.com.sabrinaweb.cepexplorer.client.AddressDto;
+import lombok.Value;
 
+@Value
 public class Address {
-    private String cep;
-    private String logradouro;
-    private String complemento;
-    private String estado;
-    private String bairro;
-    private Integer unidade;
-    private String localidade;
-    private String regiao;
+    String cep;
+    String logradouro;
+    String complemento;
+    String estado;
+    String bairro;
+    Integer unidade;
+    String localidade;
+    String regiao;
 
     public Address(AddressDto dto, Integer unidade, String complemento){
         this.bairro = dto.bairro();
@@ -19,7 +21,12 @@ public class Address {
         this.unidade = unidade;
         this.localidade = dto.localidade();
         this.logradouro = dto.logradouro();
-        this.complemento = complemento;
+
+        if (dto.complemento().isEmpty()){
+            this.complemento = complemento;
+        }else {
+            this.complemento = dto.complemento();
+        }
         this.estado = dto.estado();
     }
 
